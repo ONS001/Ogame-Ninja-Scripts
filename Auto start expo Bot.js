@@ -1,19 +1,26 @@
+// Enter your Telegram chat ID and bot or username if you wish.
 TelegramID = enterChatIDHere
 BotName = enterBotNameHere
 
+// Set the time range for when the script starts.
 timeRangeStart = "00:11:00"
 timeRangeEnd = "00:11:05"
 
+func autoExpo() {
+  
+// Turn sleep mode off.  
 StopSleepMode()
-
+  
+// Login if bot is logged out.
 if !IsLoggedIn() {
   Login()
 }
 
-func autoExpo() {
+// Turn expedition bot on.
 StartExpeditionsBot()
 
-SendTelegram(TelegramID, "Expediton bot started for bot "{BotName}"")
+// Notifies you on Telegram once its turned on.
+SendTelegram(TelegramID, BotName + " Expediton bot started.")
 }
 
 
