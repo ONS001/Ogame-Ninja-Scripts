@@ -3,8 +3,8 @@ TelegramID = enterChatIDHere
 BotName = "enterBotNameHere"
 
 // Set the time range for when the script starts.
-timeRangeStart = "09:11:00"
-timeRangeEnd = "12:11:00"
+timeRangeStart = "09:12:00"
+timeRangeEnd = "12:00:00"
 
 func autoExpo() {
   
@@ -24,5 +24,5 @@ SendTelegram(TelegramID, BotName + " Expediton bot started.")
 }
 
 
-RangeCronExec(timeRangeStart, timeRangeEnd, BotName "Start expedition bot", autoExpo)
+RangeCronExec(timeRangeStart, timeRangeEnd, BotName + "Start expedition bot", autoExpo)
 <-OnQuitCh // Blocks forever so that cronexec can be executed
