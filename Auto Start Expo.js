@@ -1,6 +1,6 @@
 // Enter your Telegram chat ID and bot or username if you wish.
 TelegramID = enterChatIDHere
-BotName = enterBotNameHere
+BotName = "enterBotNameHere"
 
 // Set the time range for when the script starts.
 timeRangeStart = "00:11:00"
