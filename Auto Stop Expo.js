@@ -24,5 +24,5 @@ SendTelegram(TelegramID, BotName + " Expediton bot stopped.")
 }
 
 
-RangeCronExec(timeRangeStart, timeRangeEnd, BotName "Stop expedition bot", autoExpo)
+RangeCronExec(timeRangeStart, timeRangeEnd, BotName + " Stop expedition bot", autoExpo)
 <-OnQuitCh // Blocks forever so that cronexec can be executed
