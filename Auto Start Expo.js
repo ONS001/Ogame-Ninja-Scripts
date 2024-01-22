@@ -3,8 +3,8 @@ TelegramID = enterChatIDHere
 BotName = "enterBotNameHere"
 
 // Set the time range for when the script starts.
-timeRangeStart = "00:11:00"
-timeRangeEnd = "00:11:05"
+timeRangeStart = "09:11:00"
+timeRangeEnd = "12:11:00"
 
 func autoExpo() {
   
