@@ -18,7 +18,7 @@ fleetSpeed = TEN_PERCENT // TWENTY_PERCENT ... HUNDRED_PERCENT (Set to whichever
 // Calculate deut to take.
 celestial = GetCachedCelestial(sendFrom)
 resources, err = GetResourcesDetails(celestial.GetID())
-deutToTake = resources.Deuterium.Available < deutToLeave
+deutToTake = resources.Deuterium.Available - deutToLeave
 
 // Variables for Telegram usage.
 universeName = GetUniverseName()
@@ -42,7 +42,7 @@ half = fleet.ArriveIn / 2
 Print("Fleetsaving for: ", ShortDur((half * 2)))
 
 // Telegram Message for Fleetsaving.
-SendTelegram(TelegramID, uniPlayerName + " Fleetsaving for: ", ShortDur((half*2)))
+SendTelegram(TelegramID, uniPlayerName + " Fleetsaving for: " + ShortDur((half*2)))
 
 // Logs out the bot.
 Logout()
