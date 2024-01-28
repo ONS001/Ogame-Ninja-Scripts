@@ -66,4 +66,4 @@ Logout()
 Sleep(Random(half * 800, half * 900))
 StopSleepMode()
 Login()
-SendTelegram(TelegramID, uniPlayerName + " Fleet arriving soon"
+SendTelegram(TelegramID, uniPlayerName + " Fleet arriving soon")
