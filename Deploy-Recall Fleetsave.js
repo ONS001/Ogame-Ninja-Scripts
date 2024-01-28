@@ -58,7 +58,7 @@ if !IsLoggedIn() {
 // Waits 3-12 seconds, recalls fleet, waits 3-12 seconds then logs out again.
 (Sleep(Random(3,12)*1000))
 CancelFleet(fleet.ID)
-SendTelegram(TelegramID, uniPlayerName + " Recalled fleet"
+SendTelegram(TelegramID, uniPlayerName + " Recalled fleet")
 (Sleep(Random(3,12)*1000))
 Logout()
 
