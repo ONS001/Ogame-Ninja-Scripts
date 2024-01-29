@@ -26,6 +26,7 @@ colonyShips = 0
 recyclers = 0
 espProbes = 0
 
+ExecAtCh(timeToJump, func() {
 // Handles which ships to jump based on the above settings.
 ships = NewShipsInfos()
 ships.Set(LIGHTFIGHTER, lightFighters)
@@ -45,6 +46,5 @@ ships.Set(RECYCLER, recyclers)
 ships.Set(ESPIONAGEPROBE, espProbes)
 
 // Use JumpGate at specified time. 
-ExecAtCh(timeToJump, func() {
 JumpGate(moonFrom.GetID(), moonTo.GetID(), *ships)
-}
+})
