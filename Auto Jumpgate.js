@@ -2,7 +2,7 @@
 moonFrom = GetCachedCelestial("M:1:2:3")
 
 // Moon you're jumping your fleet to.
-moon2 = GetCachedCelestial("M:1:2:4")
+moonTo = GetCachedCelestial("M:1:2:4")
 
 // Exact time to use JumpGate.
 timeToJump = "15:00:10" // Hours:Minutes:Seconds
