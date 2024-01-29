@@ -1,3 +1,7 @@
+///////////////////////////////////////
+// Any suggestions or ideas message me on Slack, username Xaiobon
+// Change the below settings.
+//
 // Moon you're jumping your fleet from.
 moonFrom = GetCachedCelestial("M:1:2:3")
 
@@ -25,8 +29,12 @@ largeCargos = 0
 colonyShips = 0
 recyclers = 0
 espProbes = 0
+////////////////////////////////////////
+
+// Do not change anything below.
 
 ExecAtCh(timeToJump, func() {
+  
 // Handles which ships to jump based on the above settings.
 ships = NewShipsInfos()
 ships.Set(LIGHTFIGHTER, lightFighters)
