@@ -1,3 +1,5 @@
+// This is not my script I've just saved it here.
+
 origin = GetCachedCelestial("1:2:3")           // Celestial from where to spy from
 spyFromSystem = 1                              // Lower limit system to spy
 spyToSystem = 299                              // Upper limit system to spy
