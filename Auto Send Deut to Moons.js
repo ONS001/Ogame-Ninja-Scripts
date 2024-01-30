@@ -21,6 +21,13 @@ func getUpdatedSlots() {
     return slots.Total - slots.InUse - GetFleetSlotsReserved()
 }
 
+// Calculate remaining deut we have left.
+func updateDeutLeft() {
+  resources, err = GetResourcesDetails(sendDeutFrom)
+  deutLeft = resources.Deuterium.Available
+  return deutLeft
+}
+
 // Total slots we can use.
 totalSlots = getUpdatedSlots()
 
@@ -30,17 +37,21 @@ moon = GetMoons()
 // Do the checks for each moon.
 for moon in GetMoons() {
   coord, err = ConvertIntoCoordinate(moon)
+  deutLeft = updateDeutLeft()
+  print(deutLeft)
 
   // Calculate deut we need to send to each moon.
   resources, err = GetResourcesDetails(moon)
   deutOnMoon = resources.Deuterium.Available
   deutToTransport = deutPerMoon - deutOnMoon
 
-  // Calculate number of cargos required.
+  // Calculate number of cargos required and how many we have.
   lcNeeded, scNeeded = CalcCargo(deutToTransport)
-  
-// Only send if cargos are required.
-if lcNeeded > 0 {
+  allShips, _ = sendDeutFrom.GetShips()
+  largeCargosLeft = allShips.LargeCargo 
+    
+  // Only send if cargos are required.
+  if lcNeeded > 0 and (lcNeeded > largeCargosLeft) and deutToTransport > deutLeft {
   
   // Send the mission to each moon.
   mainFleet = NewFleet()
