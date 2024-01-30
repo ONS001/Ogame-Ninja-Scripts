@@ -9,6 +9,10 @@ deutPerMoon = 100000000
 // Which planet or moon to send the deut from.
 sendDeutFrom = GetCachedCelestial("M:1:2:3")
 
+// Transport or Deploy the large cargos.
+// Change the below to PARK if you want to deploy the cargos.
+missionType = TRANSPORT
+
 // Time-delay range in seconds for each mission
 minDelayToSend = 3
 maxDelayToSend = 7
@@ -20,7 +24,6 @@ func getUpdatedSlots() {
     slots = GetSlots()
     return slots.Total - slots.InUse - GetFleetSlotsReserved()
 }
-
 // Calculate remaining deut we have left.
 func updateDeutLeft() {
   resources, err = GetResourcesDetails(sendDeutFrom)
@@ -58,7 +61,7 @@ for moon in GetMoons() {
   mainFleet.SetOrigin(sendDeutFrom)
   mainFleet.SetDestination(coord)
   mainFleet.SetSpeed(HUNDRED_PERCENT)
-  mainFleet.SetMission(TRANSPORT)
+  mainFleet.SetMission(missionType)
   _, fuel = mainFleet.FlightTime()
   mainFleet.SetDeuterium(deutToTransport)
   mainFleet.AddShips(LARGECARGO, lcNeeded)
