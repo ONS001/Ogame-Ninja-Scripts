@@ -51,7 +51,7 @@ for moon in GetMoons() {
   largeCargosLeft = allShips.LargeCargo 
     
   // Only send if cargos are required.
-  if lcNeeded > 0 and (lcNeeded > largeCargosLeft) and deutToTransport > deutLeft {
+  if lcNeeded > 0 && largeCargosLeft > lcNeeded && deutLeft > deutToTransport {
   
   // Send the mission to each moon.
   mainFleet = NewFleet()
@@ -66,5 +66,5 @@ for moon in GetMoons() {
   totalSlots--
   print(totalSlots)
 }
-SleepRAndSec(minDelayToSend, maxDelayToSend)
+SleepRandSec(minDelayToSend, maxDelayToSend)
 }
