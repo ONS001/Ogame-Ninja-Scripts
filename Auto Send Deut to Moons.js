@@ -1,7 +1,7 @@
 // This script will automatically top your moons up with deut.
 // It only uses Largo cargos for now.
 // It doesn't take in to account resources already on the way to the moon.
-// It will not used reserved slots.
+// It will not use reserved slots.
 //
 // Set this to how much total deut you want each moon to have. 
 deutPerMoon = 100000000
