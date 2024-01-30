@@ -10,7 +10,8 @@ deutPerMoon = 100000000
 sendDeutFrom = GetCachedCelestial("M:1:2:3")
 
 // Time-delay range in seconds for each mission
-waitPerSend = 4
+minDelayToSend = 3
+maxDelayToSend = 7
 
 //---------------------------------
 
@@ -54,5 +55,5 @@ if lcNeeded > 0 {
   totalSlots--
   print(totalSlots)
 }
-SleepSec(waitPerSend)
+SleepRAndSec(minDelayToSend, maxDelayToSend)
 }
