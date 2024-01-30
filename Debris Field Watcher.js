@@ -1,6 +1,5 @@
 // This is not my script I've just saved it here
 
-
 debrisCoord, _ = ParseCoord("D:1:2:3")
 delaySecs = 2
 for {
