@@ -30,6 +30,7 @@ if lcNeeded > 0 {
   mainFleet.SetMission(TRANSPORT)
   _, fuel = mainFleet.FlightTime()
   mainFleet.SetDeuterium(deutToTransport)
-  mainFleet.SetShips(lcNeeded)
+  mainFleet.AddShips(LargeCargo, lcNeeded)
 }
+SleepSec(4)
 }
