@@ -37,17 +37,17 @@ mainFleet.SetOrigin(sendFrom)
 mainFleet.SetDestination(sendTo)
 mainFleet.SetSpeed(fleetSpeed)
 mainFleet.SetMission(PARK)
+mainFleet.SetAllShips()
 _, fuel = mainFleet.FlightTime()
 mainFleet.SetAllMetal()
 mainFleet.SetAllCrystal()
 mainFleet.SetDeuterium(deutToTake - fuel)
-mainFleet.SetAllShips()
 enoughDeutForFlight = enoughDeutCheck()
 fleet, err = mainFleet.SendNow()
 
 // If we do not have enough deut the fleet isn't sent.
 if enoughDeutForFlight < fuel {
-    SendTelegram(TelegramID, uniPlayerName + " Not enough Deut to fleetsave")
+    SendTelegram(TelegramID, uniPlayerName + " WARNING: Not enough Deut to fleetsave, please check and try again!")
     return
 }
 
