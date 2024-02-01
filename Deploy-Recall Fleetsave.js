@@ -15,6 +15,7 @@ that's how long the total flight time will be. */
 fleetSpeed = TEN_PERCENT // TWENTY_PERCENT ... HUNDRED_PERCENT (Set to whichever speed you desire)
 //////////////////////////////////////
 
+// Calculate Deut we have from where we are fleetsaving from.
 func enoughDeutCheck() {
     celestial = GetCachedCelestial(sendFrom)
     resources, err = GetResourcesDetails(sendFrom)
