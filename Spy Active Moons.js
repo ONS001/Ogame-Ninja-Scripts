@@ -66,4 +66,4 @@ for system = spyFromSystem; system <= spyToSystem; system++ {
         }
     }
 }
-SendTelegram(TelegramID, uniPlayerName + " Finished probing active moons, Check your spy reports."
+SendTelegram(TelegramID, uniPlayerName + " Finished probing active moons, Check your spy reports.")
