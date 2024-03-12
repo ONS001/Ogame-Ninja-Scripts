@@ -1,0 +1,89 @@
+// This script will automatically top your planets up with resources.
+// It only uses Largo cargos for now.
+// It doesn't take in to account resources already on the way to the planet.
+// It will not use reserved slots.
+//
+// Set this to how much total resources you want each planet to have.
+metalToPlanet = 0
+crystalToPlanet = 0
+deutToPlanet = 0
+totalToPlanet = metalToPlanet + crystalToPlanet + deutToPlanet
+
+// Which planet or moon to send the resources from.
+sendResFrom = GetCachedCelestial("M:1:2:3")
+
+// Transport or Deploy the large cargos.
+// Change the below to PARK if you want to deploy the cargos.
+missionType = TRANSPORT
+
+// Time-delay range in seconds for each mission
+minDelayToSend = 3
+maxDelayToSend = 7
+
+//---------------------------------
+
+// Get how many slots we can use for the transport missions.
+func getUpdatedSlots() {
+    slots = GetSlots()
+    return slots.Total - slots.InUse - GetFleetSlotsReserved()
+}
+
+// Calculate remaining metal we have left.
+func updateMetalLeft() {
+  resources, err = GetResourcesDetails(sendResFrom)
+  metalLeft = resources.Metal.Available
+  return metalLeft
+}
+
+// Calculate remaining crystal we have left.
+func updateCrystalLeft() {
+  resources, err = GetResourcesDetails(sendResFrom)
+  crystalLeft = resources.Crystal.Available
+  return crystalLeft
+}
+
+// Calculate remaining deut we have left.
+func updateDeutLeft() {
+  resources, err = GetResourcesDetails(sendResFrom)
+  deutLeft = resources.Deuterium.Available
+  return deutLeft
+}
+
+// Total slots we can use.
+totalSlots = getUpdatedSlots()
+
+// Get a list of the players planets.
+planet = GetPlanets()
+
+// Do the checks for each planet.
+for planet in GetPlanets() {
+  coord, err = ConvertIntoCoordinate(planet)
+  metalLeft = updateMetalLeft()
+  crystalLeft = updateCrystalLeft()
+  deutLeft = updateDeutLeft()
+
+  // Calculate number of cargos required and how many we have.
+  lcNeeded, scNeeded = CalcCargo(totalToPlanet)
+  allShips, _ = sendResFrom.GetShips()
+  largeCargosLeft = allShips.LargeCargo 
+    
+  // Only send if cargos are required.
+  if lcNeeded > 0 && largeCargosLeft > lcNeeded && deutLeft > deutToTransport {
+  
+  // Send the mission to each moon.
+  mainFleet = NewFleet()
+  mainFleet.SetOrigin(sendDeutFrom)
+  mainFleet.SetDestination(coord)
+  mainFleet.SetSpeed(HUNDRED_PERCENT)
+  mainFleet.SetMission(missionType)
+  _, fuel = mainFleet.FlightTime()
+  mainFleet.SetMetal(metalToPlanet)
+  mainFleet.SetCrystal(crystalToPlanet)
+  mainFleet.SetDeuterium(deutToPlanet)
+  mainFleet.AddShips(LARGECARGO, lcNeeded)
+  mainFleet.SendNow()
+  totalSlots--
+  print(totalSlots)
+}
+SleepRandSec(minDelayToSend, maxDelayToSend)
+}
