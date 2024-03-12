@@ -68,7 +68,7 @@ for planet in GetPlanets() {
   largeCargosLeft = allShips.LargeCargo 
     
   // Only send if cargos are required.
-  if lcNeeded > 0 && largeCargosLeft > lcNeeded && deutLeft > deutToTransport {
+  if lcNeeded > 0 && largeCargosLeft > lcNeeded && deutLeft > deutToPlanet {
   
   // Send the mission to each moon.
   mainFleet = NewFleet()
