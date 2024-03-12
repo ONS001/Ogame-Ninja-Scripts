@@ -72,7 +72,7 @@ for planet in GetPlanets() {
   
   // Send the mission to each moon.
   mainFleet = NewFleet()
-  mainFleet.SetOrigin(sendDeutFrom)
+  mainFleet.SetOrigin(sendResFrom)
   mainFleet.SetDestination(coord)
   mainFleet.SetSpeed(HUNDRED_PERCENT)
   mainFleet.SetMission(missionType)
